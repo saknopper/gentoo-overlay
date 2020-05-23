@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sander@knopper.tk</email>
+		<name>Sander Knopper</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">saknopper/libnss-mysql</remote-id>
+		<bugs-to>https://github.com/saknopper/libnss-mysql/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		libnss-mysql is a NSS MySQL library, allowing to do user and group administration through a MySQL database
+	</longdescription>
+</pkgmetadata>
+
