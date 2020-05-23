@@ -12,12 +12,10 @@ HOMEPAGE="https://github.com/saknopper/libnss-mysql"
 SRC_URI="https://github.com/saknopper/libnss-mysql/releases/download/v${PV}/${PN}-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug"
+IUSE="debug static-libs"
 
 DEPEND="dev-db/mysql-connector-c:="
 RDEPEND="${DEPEND}"
-
-#S="${WORKDIR}/${PN}"
 
 DOCS=( AUTHORS DEBUGGING FAQ INSTALL NEWS README THANKS
 	UPGRADING ChangeLog
@@ -36,13 +34,14 @@ src_configure() {
 	# udev tries to access a user / group that doesn't exist
 	# on the system before /usr is mounted.
 	econf --libdir="/usr/$(get_libdir)" \
-		$(use_enable debug)
+		$(use_enable debug) \
+		$(use_enable static-libs static)
 }
 
 src_install() {
 	default
 
-	find "${ED}" -name '*.la' -delete || die
+	use static-libs || find "${D}" -name '*.la' -delete
 
 	newdoc sample/README README.sample
 
